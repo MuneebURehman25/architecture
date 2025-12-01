@@ -1,3 +1,5 @@
+import 'package:flutter_architecture/domain/entity/user.dart';
+
 class UserJson {
   final int id;
   final String name;
@@ -36,4 +38,13 @@ class UserJson {
       'website': website,
     };
   }
+
+  User toDomain() => User(
+    id: id,
+    name: name,
+    username: username,
+    email: email,
+    phone: phone,
+    website: website,
+  );
 }

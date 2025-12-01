@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/users_list_cubit.dart';
-import 'package:flutter_architecture/users_list_state.dart';
-import 'package:flutter_architecture/widgets/user_card.dart';
+import 'package:flutter_architecture/ui/users_list/users_list_cubit.dart';
+import 'package:flutter_architecture/ui/users_list/users_list_state.dart';
+import 'package:flutter_architecture/ui/widgets/user_card.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UsersListPage extends StatefulWidget {

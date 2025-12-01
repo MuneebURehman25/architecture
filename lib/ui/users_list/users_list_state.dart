@@ -1,14 +1,14 @@
 
-import 'package:flutter_architecture/user_json.dart';
+import 'package:flutter_architecture/domain/entity/user.dart';
 
   class UsersListState {
-    final List<UserJson> users;
+    final List<User> users;
     final bool isLoading;
     const UsersListState({required this.users, required this.isLoading});
 
     factory UsersListState.empty() => const UsersListState(users: [],isLoading: false);
 
-    UsersListState copyWith({List<UserJson>? users, bool? isLoading}) => UsersListState(
+    UsersListState copyWith({List<User>? users, bool? isLoading}) => UsersListState(
       users: users ?? this.users,
       isLoading: isLoading ?? this.isLoading
     );
