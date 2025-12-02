@@ -4,13 +4,16 @@ import 'package:flutter_architecture/domain/entity/user.dart';
   class UsersListState {
     final List<User> users;
     final bool isLoading;
-    const UsersListState({required this.users, required this.isLoading});
+    final String? error;
+    const UsersListState({required this.users, required this.isLoading,this.error});
 
     factory UsersListState.empty() => const UsersListState(users: [],isLoading: false);
 
-    UsersListState copyWith({List<User>? users, bool? isLoading}) => UsersListState(
-      users: users ?? this.users,
-      isLoading: isLoading ?? this.isLoading
-    );
+    UsersListState copyWith({List<User>? users, bool? isLoading,String? error}) =>
+        UsersListState(
+            users: users ?? this.users,
+            isLoading: isLoading ?? this.isLoading,
+            error:  error ?? this.error
+        );
 
   }

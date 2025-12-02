@@ -1,7 +1,10 @@
+import 'package:dartz/dartz.dart';
+
 import '../entity/user.dart';
+import '../failure/users_list_failure.dart';
 
 abstract class UserRepository {
 
-  Future<List<User>> getUsers();
+  Future<Either<UsersListFailure, List<User>>> getUsers();
 
 }
