@@ -1,26 +1,34 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/users_list_cubit.dart';
-import 'package:flutter_architecture/users_list_page.dart';
+import 'package:flutter_architecture/data/users_repository.dart';
+import 'package:flutter_architecture/domain/repository/users_repository.dart';
+import 'package:flutter_architecture/ui/users_list/users_list_cubit.dart';
+import 'package:flutter_architecture/ui/users_list/users_list_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
-
+final getIt = GetIt.instance;
 
 void main() {
-  runApp(MultiBlocProvider(
-    providers: [
 
-      BlocProvider(create: (context) => UsersListCubit()..fetchUsers())
-    ],
+  getIt.registerSingleton<UserRepository>(RestApiUsersRepository());
 
-      child: const MyApp()));
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => UsersListCubit(getIt())..fetchUsers(),
+        ),
+      ],
+
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,5 +40,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
