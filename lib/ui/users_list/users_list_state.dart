@@ -7,7 +7,7 @@ import 'package:flutter_architecture/domain/entity/user.dart';
     final String? error;
     const UsersListState({required this.users, required this.isLoading,this.error});
 
-    factory UsersListState.empty() => const UsersListState(users: [],isLoading: false);
+    factory UsersListState.initial() => const UsersListState(users: [],isLoading: false);
 
     UsersListState copyWith({List<User>? users, bool? isLoading,String? error}) =>
         UsersListState(

@@ -1,11 +1,16 @@
+import 'package:flutter_architecture/domain/entity/user.dart';
 import 'package:flutter_architecture/domain/repository/users_repository.dart';
+import 'package:flutter_architecture/ui/user_details/user_detail_initial_params.dart';
+import 'package:flutter_architecture/ui/users_list/users_list_navigator.dart';
 import 'package:flutter_architecture/ui/users_list/users_list_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class UsersListCubit extends Cubit<UsersListState>{
   final UserRepository usersRepository;
-  UsersListCubit(this.usersRepository) : super(UsersListState.empty());
+  final UsersListNavigator navigator;
+
+  UsersListCubit(this.usersRepository,this.navigator) : super(UsersListState.initial());
 
   Future<void> fetchUsers() async {
     emit(state.copyWith(isLoading : true,error:  null));
@@ -21,5 +26,7 @@ class UsersListCubit extends Cubit<UsersListState>{
     });
 
   }
+
+  void onTapUser(User user) => navigator.openUserDetail(UserDetailInitialParams(user: user));
 
 }

@@ -1,0 +1,5 @@
+class UsersListInitialParams{
+
+  const UsersListInitialParams();
+
+}

@@ -4,14 +4,16 @@ import '../../domain/entity/user.dart';
 
 class UserCard extends StatelessWidget {
   final User user;
+  final VoidCallback? onTap;
 
-  const UserCard({super.key, required this.user});
+  const UserCard({super.key, this.onTap, required this.user});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
       child: ListTile(
+        onTap: onTap,
         leading: CircleAvatar(
           backgroundColor: Colors.teal.shade100,
           child: Text(
@@ -42,11 +44,6 @@ class UserCard extends StatelessWidget {
             Text(user.phone.split(' ')[0]),
           ],
         ),
-        onTap: () {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('Website: ${user.website}')));
-        },
       ),
     );
   }
